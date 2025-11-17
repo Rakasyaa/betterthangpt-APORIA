@@ -327,6 +327,16 @@ body.dark-mode::after {
         radial-gradient(circle at 90% 92%, #fbbf24 0.5%, transparent 0.5%);
 }
 
+.nav-container {
+    background-color: var(--sky-blue);
+    display: flex;
+}
+
+.nav-bar{
+    flex-wrap: wrap;
+    color: ;
+}
+
 .container {
     max-width: 1400px;
     margin: 0 auto;
@@ -813,8 +823,8 @@ body.dark-mode .info-card h3 {
     transition: color 0.5s ease;
 }
 
-/* Footer */
-.footer {
+/* quote */
+.quote {
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(10px);
     padding: 20px;
@@ -825,12 +835,12 @@ body.dark-mode .info-card h3 {
     transition: all 0.5s ease;
 }
 
-body.dark-mode .footer {
+body.dark-mode .quote {
     background: rgba(30, 41, 59, 0.9);
     border-color: rgba(251, 191, 36, 0.3);
 }
 
-.footer p {
+.quote p {
     color: var(--deep-blue);
     font-style: italic;
     font-size: 16px;
@@ -838,9 +848,85 @@ body.dark-mode .footer {
     transition: color 0.5s ease;
 }
 
-body.dark-mode .footer p {
+body.dark-mode .quote p {
     color: var(--dark-gray);
 }
+
+footer {
+    margin-top: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    text-align: center;
+    border-radius: 15px;
+    border: 2px solid rgba(224, 122, 95, 0.3);
+    box-shadow: 0 5px 20px var(--shadow);
+    transition: all 0.5s ease;
+}
+
+body.dark-mode footer {
+    background: rgba(30, 41, 59, 0.9);
+    border-color: rgba(251, 191, 36, 0.3);
+}
+
+.desc {
+    max-width: 800px;
+    /* margin-right:10px; */
+    text-align: left;
+    color: var(--deep-blue);
+}
+
+.footer-container {
+    margin-left: 60px;
+    margin-right: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.footer-section h3, .desc h3 {
+    color: var(--dark-gray);
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.footer-section p,
+.footer-section a {
+    color: var(--deep-blue);
+    font-size: 16px;
+    letter-spacing: 1px;
+    transition: color 0.5s ease;
+    text-decoration: none;
+}
+
+.footer-section p, a{
+    font-style: italic;
+}
+
+.footer-section a:hover {
+    color: var(--gold);
+}
+/* 
+body.dark-mode .footer-section a:hover {
+    color: var(--dark-gray);
+} */
+
+.social-icons a {
+    margin-right: 10px;
+    font-size: 18px;
+    font-style: normal;
+}
+
+.copyright {
+    margin-top: 40px;
+    border-top: 1px solid #555;
+    text-align: center;
+    padding-top: 15px;
+    font-size: 13px;
+    color: var(--dark-gray);
+}
+
 
 /* Particles Effect */
 .particle {

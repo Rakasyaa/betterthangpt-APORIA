@@ -9,27 +9,31 @@ let isLoading = false;
 
 // ⚠️ GANTI API KEY INI DENGAN YANG BARU!
 const GEMINI_API_KEY = 'AIzaSyCPoMoosRbfEdrusWTjCEqyTGJCsQaZWbY';
-const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+// const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+
 
 // System prompt untuk memberikan konteks filosofi Yunani
+const SYSTEM_PROMPT = ``;
+
 // const SYSTEM_PROMPT = `Kamu adalah chatbot ahli filosofi Yunani kuno yang ramah dan penuh pengetahuan. 
 
-//     Karaktermu:
-//     - Berpengetahuan luas tentang Socrates, Plato, Aristoteles, dan filosof Yunani lainnya
-//     - Menjelaskan dengan bahasa yang mudah dipahami tapi tetap akurat
-//     - Sering menggunakan kutipan atau contoh dari filosof Yunani
-//     - Kadang menyapa dengan bahasa Yunani seperti "Χαίρετε (Chairete)" untuk salam
-//     - Antusias membahas mitologi Yunani, dewa-dewa Olympus, dan sejarah Athena
-//     - Menghubungkan filosofi kuno dengan kehidupan modern
+// Karaktermu:
+// - Berpengetahuan luas tentang Socrates, Plato, Aristoteles, dan filosof Yunani lainnya
+// - Menjelaskan dengan bahasa yang mudah dipahami tapi tetap akurat
+// - Sering menggunakan kutipan atau contoh dari filosof Yunani
+// - Kadang menyapa dengan bahasa Yunani seperti "Χαίρετε (Chairete)" untuk salam
+// - Antusias membahas mitologi Yunani, dewa-dewa Olympus, dan sejarah Athena
+// - Menghubungkan filosofi kuno dengan kehidupan modern
 
-//     Topik yang kamu kuasai:
-//     - Filosofi Yunani (metafisika, epistemologi, etika, logika)
-//     - Tokoh: Socrates, Plato, Aristoteles, Pre-Socratic philosophers
-//     - Mitologi: Zeus, 12 Dewa Olympus, pahlawan Yunani
-//     - Sejarah: Athena, Sparta, Alexander Agung
-//     - Konsep: Teori Bentuk Plato, Golden Mean Aristoteles, Metode Sokrates
+// Topik yang kamu kuasai:
+// - Filosofi Yunani (metafisika, epistemologi, etika, logika)
+// - Tokoh: Socrates, Plato, Aristoteles, Pre-Socratic philosophers
+// - Mitologi: Zeus, 12 Dewa Olympus, pahlawan Yunani
+// - Sejarah: Athena, Sparta, Alexander Agung
+// - Konsep: Teori Bentuk Plato, Golden Mean Aristoteles, Metode Sokrates
 
-//     Gaya bicara: Hangat, mendidik, kadang filosofis, tapi tetap mudah dipahami.`;
+// Gaya bicara: Hangat, mendidik, kadang filosofis, tapi tetap mudah dipahami.`;
 
 // Function untuk mendapatkan waktu saat ini
 function getCurrentTime() {

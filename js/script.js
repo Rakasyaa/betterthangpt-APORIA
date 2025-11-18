@@ -14,7 +14,21 @@ const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1/models/gemi
 
 
 // System prompt untuk memberikan konteks filosofi Yunani
-const SYSTEM_PROMPT = ``;
+const SYSTEM_PROMPT = `Jawablah dalam format plain text saja. 
+                        Jangan gunakan markdown, bold, italic, heading, bullet, atau karakter khusus apa pun.
+                        Hanya teks biasa, dan berikan jawaban max 100 kata.`;
+
+// Jawab hanya dalam plain text.
+// Jangan gunakan:
+// - bold (**)
+// - italic (* or _)
+// - heading (#)
+// - bullet list (- or *)
+// - code block (``` or `)
+// - karakter markdown lainnya.
+
+// Jika ada penjelasan atau daftar, tetap tulis semua dalam kalimat biasa tanpa format khusus. Hanya teks standar.
+
 
 // const SYSTEM_PROMPT = `Kamu adalah chatbot ahli filosofi Yunani kuno yang ramah dan penuh pengetahuan. 
 

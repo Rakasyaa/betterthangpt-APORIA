@@ -1,63 +1,96 @@
-# APORIA — Your Greek Philosophy Assistant  
-Landing Page & Informational Website  
+# 🎭 APORIA — Your Greek Philosophy Assistant  
+
+Aporia adalah sebuah **web-based chatbot** bertema filsafat Yunani yang dibangun menggunakan HTML, CSS, dan JavaScript. Website ini menyediakan antarmuka chat modern dengan integrasi **Gemini API** sehingga pengguna dapat mengajukan pertanyaan filosofis, mitologi Yunani, sejarah, hingga topik terkait lainnya.
+
+Website juga memiliki elemen visual tematik seperti Gunung Olympus, animasi awan, partikel, dark mode toggle, dan halaman pendukung (Home & About). Fokus utama proyek ini adalah **fitur chat AI**, bukan hanya landing page.
 
 ---
 
-## 🎭 Deskripsi Singkat
-
-**Aporia** adalah sebuah landing page statis modern yang dirancang untuk memperkenalkan *Your Greek Philosophy Assistant*.  
-Website ini menampilkan tema estetika Yunani Kuno dengan elemen visual seperti simbol Φ, motif kuil Olympus, info cards, profil tim, dan sistem tema gelap/terang.
-
-Tujuan repo ini adalah menyediakan struktur profesional, bersih, dan mudah dikembangkan untuk proyek edukasi, asisten AI, atau platform pembelajaran filosofi.
+## ✨ Fitur Utama Chatbot
+- **Integrasi API Gemini 2.5 Flash** untuk respons cepat.
+- **Prompt sistem yang memaksa chatbot menjawab dalam plain text** tanpa bold, italic, heading, list, atau markup.
+- **Quick Suggestions** berupa tombol yang langsung mengisi pertanyaan populer (Socrates, Zeus, Plato, Olympus).
+- **Pesan User & Bot** dengan avatar, timestamp, dan auto-scroll.
+- **Loading Indicator** animasi titik tiga saat bot berpikir.
+- **Dark Mode Toggle** tersimpan di localStorage.
+- **Efek Awan & Partikel** bergerak secara periodik untuk nuansa tema Olympus.
+- **Error Handling** untuk kegagalan API.
 
 ---
 
-## ✨ Fitur Utama
+## 🧠 Arsitektur Chatbot (script.js)
 
-- **Hero Header** dengan logo Φ, tagline, dan background elegan.
-- **Info Panel (3 Cards)** — Filosofi Yunani, Kebijaksanaan Kuno, dan Tanya Apa Saja.
-- **Our Team Section** — menampilkan 3 anggota tim dengan foto, nama, dan deskripsi.
-- **Quote Section** — kutipan klasik *Know Thyself*.
-- **Dark Mode Toggle** — interaksi sederhana via JavaScript.
-- **Footer Lengkap** — Tentang, Social Media, Site Links.
-- **Responsif** — bekerja di desktop dan mobile.
-- **Struktur kode rapi** — mudah dikembangkan ke multipage.
+### 🔹 1. System Prompt
+Bot dipaksa menjawab:
+- TANPA markdown  
+- TANPA bold/italic  
+- TANPA list  
+- Dalam bentuk paragraf biasa  
+- Maksimal ±100 kata  
+
+### 🔹 2. Logika Chat
+- `addMessage()` → buat pesan user/bot
+- `addLoadingMessage()` → animasi bot mengetik
+- `callGeminiAPI()` → fetch ke endpoint Gemini
+- `handleSendMessage()` → urutan kirim pesan
+- Event: klik tombol kirim, Enter, quick suggestion
+
+### 🔹 3. UI & Experience
+- Efek visual partikel (jatuh perlahan)
+- Efek awan bergerak horizontal
+- Dark mode toggle yang persistent
+- Auto-focus input ketika halaman dimuat
 
 ---
 
 ## 📁 Struktur Direktori
-
 ```
 asilkomtech-betterthangpt/
 │
 ├── css/
-│   └── style.css
+│   └── style.css                  # Styling utama, dark mode, animasi
 │
 ├── js/
-│   └── script.js
+│   └── script.js                  # Sistem chatbot + interaksi UI lengkap
 │
 ├── assets/
-│   └── images/
-│       └── member1.jpg
-│       └── member2.jpg
-│       └── member3.jpg
-│
-├── model/                 # model AI agent
+│   └── images/                    # Gambar halaman Home & About
 │
 ├── pages/
-│   ├── About/
-│   │    └── index.html     # halaman About
-│   │
-│   └── Home/
-│       └── index.html     # halaman Home
+│   ├── Home/
+│   │   └── index.html
+│   └── About/
+│       └── index.html
 │
-└── index.html             # landing page utama
+└── index.html                     # Halaman Chat utama (Aporia Chat)
 ```
 
-### Catatan Penting  
-- Pastikan file utama bernama **index.html**, bukan `indeks.html`.
-- Jika foto anggota masih digabung, pisahkan menjadi 3 file individual.
-- Folder `model/` boleh dihapus jika tidak digunakan.
+---
+
+## Penjelasan File JavaScript (script.js)
+### 1. Variabel Utama
+- Referensi DOM (chatMessages, chatInput, sendBtn, quickSuggestions).
+- State aplikasi: `messageCount`, `isLoading`.
+- URL + API key untuk Gemini.
+
+### 2. Sistem Prompt
+Chatbot diatur menggunakan prompt berikut:
+- Jawaban harus *plain text*.
+- Dilarang memakai markdown.
+- Kalimat maksimal ±100 kata.
+
+### 3. Fungsi Chat
+- **addMessage()**: membangun DOM pesan user atau bot.
+- **addLoadingMessage()** dan **removeLoadingMessage()**: animasi bot mengetik.
+- **callGeminiAPI()**: mengirim request POST ke Gemini dengan payload JSON.
+- **getBotResponse()**: wrapper sederhana memanggil API.
+- **handleSendMessage()**: validasi input, kirim pesan, tampilkan respons.
+
+### 4. Fitur UI Tambahan
+- **toggleDarkMode()** → menyimpan state ke `localStorage`.
+- **createParticle()** → partikel acak jatuh perlahan.
+- **createCloud()** → awan bergerak horizontal.
+- Event listeners: tombol kirim, Enter, quick suggestions, onload.
 
 ---
 
@@ -96,41 +129,29 @@ serve . -p 5000
 
 - Gunakan variabel CSS (`:root`) agar mudah mengatur tema atau warna.
 - Untuk elemen yang membutuhkan layering, **pastikan sudah pakai `position: relative`** agar `z-index` berfungsi.
-- Untuk spasi kosong di antara section, gunakan utilitas seperti:
-
-```css
-.spacer-lg { height: 180px; }
-```
-
-- Gunakan `object-fit: cover` untuk menjaga foto tim terlihat rapi.
 - Semua elemen interaktif (toggle tema, dsb.) sudah terhubung lewat `script.js`.
+- Kumpulkan seluruh document.getElementById di bagian atas sebagai variabel global untuk akses cepat.
+- Pisahkan fungsi sesuai peran:
+    - Fungsi UI (addMessage, createCloud, toggleDarkMode)
+    - Fungsi API (callGeminiAPI, getBotResponse)
+    - Event handlers (handleSendMessage, listener tombol input)
 
 ---
 
-## 👥 Menambahkan / Mengubah Konten Tim
+## 👥 Tim Pengembang
 
-1. Masukkan foto ke:
-```
-assets/images/
-```
+### **1. Rakasya Yoga**
+**Backend & AI Engineer**  
+Fokus pada machine learning, integrasi model AI, dan pembuatan sistem backend.  
+Berpengalaman dalam pipeline data, API, dan arsitektur sistem modern.
 
-2. Format yang disarankan: `member1.jpg`, `member2.jpg`, `member3.jpg`.
+### **2. Fadlullah Hasan**
+**Content & Research Analyst**  
+Melakukan riset filosofis dan memastikan akurasi sejarah, konsep, serta konten yang ditampilkan oleh Aporia.
 
-3. Edit section tim di `index.html`:
-
-```html
-<img src="assets/images/member1.jpg" alt="Nama Member">
-<h3>Nama Member</h3>
-<p>Deskripsi singkat yang profesional.</p>
-```
-
----
-
-## 🧠 Paragraf Info Cards (Versi Diperpanjang)
-
-Berikut paragraf gabungan untuk digunakan pada halaman utama atau bagian "Tentang Kami":
-
-> *Aporia adalah platform pembelajaran yang menghadirkan kembali kebijaksanaan Yunani Kuno melalui pendekatan yang sederhana, visual, dan interaktif. Kami mengeksplorasi pemikiran para filosof besar seperti **Socrates, Plato, dan Aristoteles**, serta menghubungkannya dengan kehidupan modern. Melalui penjelasan ringan, konten edukatif, dan tanya jawab langsung, Aporia membantu Anda memahami konsep-konsep seperti etika, logika, retorika, dan makna hidup. Situs ini dirancang untuk semua kalangan — dari pemula hingga penggemar filosofi — agar dapat menikmati wawasan klasik yang tetap relevan selama ribuan tahun.*
+### **3. M. Khalid**
+**Frontend & UI/UX Designer**  
+Mengembangkan desain antarmuka yang elegan, intuitif, dan konsisten dengan tema Yunani Kuno.
 
 ---
 
@@ -144,7 +165,7 @@ Anda dapat meng-hosting website ini di layanan gratis seperti:
 - Buka **Settings → Pages → Source: main/root**
 - Selesai
 
-URL akan berbentuk: `https://username.github.io/asilkomtech-betterthangpt/`
+URL akan berbentuk: `https://username.github.io/bootcamp-fasilkomtech-week2-betterthangpt/`
 
 ### 2. Netlify (super mudah)
 
@@ -164,26 +185,6 @@ URL akan berbentuk: `https://username.github.io/asilkomtech-betterthangpt/`
 - [ ] Minify CSS & JS
 - [ ] Tambahkan `alt=""` pada seluruh gambar
 - [ ] Tambahkan favicon (logo Φ)
-- [ ] Tambahkan meta SEO:
-
-```html
-<meta name="description" content="Aporia — Your Greek Philosophy Assistant. Pelajari filsafat Yunani kuno dengan cara sederhana.">
-```
-
----
-
-## 📌 Kontribusi
-
-Kontribusi terbuka. Gunakan format commit berikut:
-
-- `feat:` fitur baru
-- `fix:` perbaikan bug
-- `docs:` perbaikan dokumentasi
-- `style:` perbaikan tampilan / CSS
-- `refactor:` perapian kode
-- `chore:` tugas non-fitur
-
-Buat branch baru sebelum PR.
 
 ---
 

@@ -49,6 +49,12 @@ body.dark-mode {
     box-sizing: border-box;
 }
 
+/* hilangin scroll wheal */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(to bottom, 

@@ -1,5 +1,7 @@
 # 🎭 APORIA — Your Greek Philosophy Assistant  
 
+Jelajahi perjalanan panjang filsafat Yunani kuno yang dipenuhi pemikiran mendalam dari para filsuf besar seperti Socrates, Plato, dan Aristoteles. Temukan ajaran-ajaran klasik tentang etika, logika, kebajikan, dan pencarian jati diri yang telah membentuk fondasi peradaban Barat dan tetap relevan hingga zaman modern. Dari kebijaksanaan kuno yang mengajarkan moderasi hingga dialog kritis yang mendorong kita mempertanyakan segala sesuatu, dunia filsafat Yunani menawarkan wawasan abadi yang dapat memperkaya cara kita berpikir dan menjalani hidup. Melalui Aporia, Anda dapat bertanya tentang apa saja—mitologi, konsep filsafat, kisah para dewa, ataupun tokoh-tokoh klasik—dan mendapatkan penjelasan yang ramah, interaktif, serta mudah dipahami.
+
 Aporia adalah sebuah **web-based chatbot** bertema filsafat Yunani yang dibangun menggunakan HTML, CSS, dan JavaScript. Website ini menyediakan antarmuka chat modern dengan integrasi **Gemini API** sehingga pengguna dapat mengajukan pertanyaan filosofis, mitologi Yunani, sejarah, hingga topik terkait lainnya.
 
 Website juga memiliki elemen visual tematik seperti Gunung Olympus, animasi awan, partikel, dark mode toggle, dan halaman pendukung (Home & About). Fokus utama proyek ini adalah **fitur chat AI**, bukan hanya landing page.
